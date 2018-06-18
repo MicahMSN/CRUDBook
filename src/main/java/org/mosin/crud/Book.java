@@ -1,11 +1,15 @@
 package org.mosin.crud;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "test.books")
+@EntityListeners(AuditingEntityListener.class)
 public class Book implements Serializable {
 
     private static long serialVersionUID = -8706689714326132798L;
@@ -41,7 +45,6 @@ public class Book implements Serializable {
 
 
     public Book(String title, String description, String author, String isbn, String printYear, Boolean readAlready) {
-        //this.setId(-1L);
         this.title = title;
         this.description = description;
         this.author = author;

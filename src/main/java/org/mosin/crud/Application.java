@@ -6,8 +6,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class Application {
 
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
@@ -17,7 +20,7 @@ public class Application {
 	}
 
 	@Bean
-	public CommandLineRunner loadData( BookRepository bookRepository) {
+	public CommandLineRunner loadData(BookRepository bookRepository) {
 		return (args) -> {
 			bookRepository.save(new Book("Book1 title", "Book1 description", "Book1 author", "ISBN BOOK!", "1967", false));
 			bookRepository.save(new Book("Book12 title", "Book12 description", "Book12 author", "ISBN BOOK2", "1967", true));

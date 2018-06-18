@@ -5,9 +5,10 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
-@SpringUI(path = "/book")
+@SpringUI
 public class BookUI extends UI {
 
     final TextField filter;
@@ -17,7 +18,7 @@ public class BookUI extends UI {
     private final BookEditor editor;
     private final Grid<Book> grid;
 
-
+    @Autowired
     public BookUI(BookRepository repo, BookEditor editor) {
         this.repo = repo;
         this.editor = editor;

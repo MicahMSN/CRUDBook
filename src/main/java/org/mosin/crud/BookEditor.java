@@ -66,6 +66,7 @@ public class BookEditor extends VerticalLayout {
             return;
         }
         final boolean persisted = (eBook.getId() != null);
+
         if (persisted) {
             // Find fresh entity for editing
             book = repository.findById(eBook.getId()).get();
